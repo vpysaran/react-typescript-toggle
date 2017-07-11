@@ -28,7 +28,7 @@ This is a react based toggle button component developed using Typescript.
 ### The above example demonstrates the following:
 How to pass custom label
 How to pass custom style
-Shows the default checked, un-checked icons
+Shows the default checked, un-checked toggle icons
 
 ### Further Customization
 
@@ -44,7 +44,7 @@ The above example demonstrates the following:
 How to pass custom label
 How to pass custom style
 How to pass custom icon's
-Can use any svg-image as icons for checked, un-checked icons
+Can use any svg-image as icons for checked, un-checked toggle icons
 
 ## To install dependencies
 npm install
