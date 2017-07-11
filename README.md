@@ -10,18 +10,19 @@ This is a react based toggle button component developed using Typescript.
 - [ ] Pass disabled mode Styles
 
 interface Props extends React.Props<Toggle> {
-    label : string;
+    label: string;
     style: any;
 };
 
 ## Usage
 ### Basic:
+
 const styles = {
   togglebutton: {
     marginBottom: 16
   }
 };
-<Toggle label="Simple" style={styles.togglebutton}/>
+<Toggle label="Simple" style={styles.togglebutton} />
 
 ### The above example demonstrates the following:
 How to pass custom label
