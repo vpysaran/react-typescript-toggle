@@ -9,19 +9,20 @@ This is a react based toggle button component developed using Typescript.
 - [ ] Label position - Left/Right
 - [ ] Pass disabled mode Styles
 
+## Usage
+### Basic:
+
     interface Props extends React.Props<Toggle> {
         label: string;
         style: any;
     };
-
-## Usage
-### Basic:
 
     const styles = {
       togglebutton: {
         marginBottom: 16
       }
     };
+    
     <Toggle label="Simple" style={styles.togglebutton} />
 
 ### The above example demonstrates the following:
@@ -30,11 +31,13 @@ How to pass custom style
 Shows the default checked, un-checked icons
 
 ### Further Customization
+
     const styles = {
       togglebutton: {
         marginBottom: 16
       }
     };
+    
     <Toggle label="Custom icon" style={styles.togglebutton} uncheckedIcon={} checkedIcon={} />
 
 The above example demonstrates the following:
