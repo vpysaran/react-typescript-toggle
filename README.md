@@ -2,12 +2,12 @@
 This is a react based toggle button component developed using Typescript.
 
 ## Features
--[] Pass the Label Value
--[] Pass Custom Style's
--[] Pass Default value
--[] Toggle Animation Effects
--[] Label position - Left/Right
--[] Pass disabled mode Styles
+- [ ] Pass the Label Value
+- [ ] Pass Custom Style's
+- [ ] Pass Default value
+- [ ] Toggle Animation Effects
+- [ ] Label position - Left/Right
+- [ ] Pass disabled mode Styles
 
 interface Props extends React.Props<Toggle> {
     label : string;
