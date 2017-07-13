@@ -1,7 +1,15 @@
 import * as React from 'react';
 
-function getStyles(props) {
+function getStyles(props, state) {
+  console.log();
     return {
+        labelStyleDefault: {
+          cursor: 'pointer',
+        },
+        labelStyleDisabled: {
+          cursor: 'not-allowed',
+          color: 'rgba(0, 0, 0, 0.3)',
+        },
         inputStyle: {
             width: '100%',
             height: '100%',
@@ -16,17 +24,11 @@ function getStyles(props) {
             width: '36px',
             padding: '4px 0px 6px 2px',
         },
-        togglePadDefault: {
-          width: '100%',
-          height: '14px',
-          borderRadius: '30px',
-          backgroundColor: 'rgb(189, 189, 189)',
-        },
         togglePad: {
           width: '100%',
           height: '14px',
           borderRadius: '30px',
-          backgroundColor: 'rgba(0, 188, 212, 0.5)',
+          backgroundColor: state.switched ? 'rgba(0, 188, 212, 0.5)' : 'rgb(189, 189, 189)',
         },
         toggleBtnDefult: {
           color: 'rgba(0, 0, 0, 0.87)',
@@ -69,6 +71,11 @@ interface Props extends React.Props<Toggle> {
   labelPosition?: string;
   style?: any;
   state?: any;
+  thumbStyle?: string; 
+  trackStyle?: string;
+  thumbSwitchedStyle?: string;
+  trackSwitchedStyle?: string;
+  labelStyle?: string;
 }
 
 export default class Toggle extends React.Component<Props, {switched}> {
@@ -94,17 +101,24 @@ export default class Toggle extends React.Component<Props, {switched}> {
 
   public render() {
     
-    const styles = getStyles(this.props);
-    const {label, style, defaultToggled, disabled, labelPosition} = this.props;   
+    const styles = getStyles(this.props, this.state);
+    const {label, style, defaultToggled, disabled, labelPosition, labelStyle} = this.props;   
     const switched = this.state.switched;
 
-    const labelElm = (<label onClick={disabled ? this.handleNothing : this.handleChange} >{label}</label>);
+    const labelStyleDefault = {...styles.labelStyleDefaul, ...labelStyle};
+    const labelElm = (<label style={disabled ? styles.labelStyleDisabled : labelStyleDefault} 
+                        onClick={disabled ? this.handleNothing : this.handleChange} >{label}
+                      </label>);
 
     const inputElm = (<input type="checkbox" checked={switched} disabled={disabled} onChange={this.handleChange} style={styles.inputStyle} />);    
+    
+    const toggleDefault = {...styles.toggleRoot, ...styles.labelStyleDefault};
+    const toggleDisable = {...styles.toggleRoot, ...styles.labelStyleDisabled};
+    
     const toggleElm = (
-        <div className="toggle-root" onClick={disabled ? this.handleNothing : this.handleChange} style={styles.toggleRoot}>
+        <div className="toggle-root" onClick={disabled ? this.handleNothing : this.handleChange} style={disabled ? toggleDisable : toggleDefault}>
           <div className="toggle-btn" style={switched ? styles.toggleBtn : styles.toggleBtnDefult}></div>
-          <div className="toggle-pad" style={switched ? styles.togglePad : styles.togglePadDefault}></div>
+          <div className="toggle-pad" style={styles.togglePad}></div>
         </div>
     );
 
@@ -112,7 +126,7 @@ export default class Toggle extends React.Component<Props, {switched}> {
       <div style={styles.switchRoot}>{toggleElm}{labelElm}</div>
     ) : (
       <div style={styles.switchRoot}>{labelElm}{toggleElm}</div>
-    );   
+    ); 
     
     return (
       <div style={style}>
