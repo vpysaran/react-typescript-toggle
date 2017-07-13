@@ -20,12 +20,12 @@ export default class App extends React.Component<Props, {}> {
       <div>
         <h1>React Components in Typescript</h1>
         <h2>Toggle Button</h2>
-        <div style={styles.block}>
-          <Toggle style={styles.toggle} label="Simple" defaultToggled={true} />
-          <Toggle style={styles.toggle} label="Toggled by default" />
-          <Toggle style={styles.toggle} label="Disabled" disabled={true} />
-          <Toggle style={styles.toggle} label="Label on the right" labelPosition="right"/>
-          <Toggle style={styles.toggle} label="Styling" />
+        <div style={styles.block} >
+          <Toggle label="Simple" />
+          <Toggle label="Toggled by default" defaultToggled={true} />
+          <Toggle label="Disabled" disabled={true} />
+          <Toggle label="Label on the right" labelPosition="right"/>
+          <Toggle label="Styling" />
         </div>        
       </div>
     );
