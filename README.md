@@ -1,6 +1,9 @@
 # React Typescript Toggle
 This is a react based toggle button component developed using Typescript.
 
+## Snapshot
+![Snapshot of Toggle Button](https://github.com/vpysaran/react-typescript-toggle/blob/master/snapshot/toggle-button.gif)
+
 ## Features
 - [x] Pass the Label Value
 - [ ] Pass Custom Style's
