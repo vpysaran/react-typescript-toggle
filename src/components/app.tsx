@@ -11,7 +11,22 @@ const styles = {
   },
   toggle: {
     marginBottom: 16,
-  } 
+  },
+  thumbOff: {
+    backgroundColor: '#ffcccc',
+  },
+  trackOff: {
+    backgroundColor: '#ff9d9d',
+  },
+  thumbSwitched: {
+    backgroundColor: 'red',
+  },
+  trackSwitched: {
+    backgroundColor: '#ff9d9d',
+  },
+  labelStyle: {
+    color: 'red',
+  }, 
 }
 
 export default class App extends React.Component<Props, {}> {
@@ -25,7 +40,6 @@ export default class App extends React.Component<Props, {}> {
           <Toggle label="Toggled by default" defaultToggled={true} />
           <Toggle label="Disabled" disabled={true} />
           <Toggle label="Label on the right" labelPosition="right"/>
-          <Toggle label="Styling" />
         </div>        
       </div>
     );
