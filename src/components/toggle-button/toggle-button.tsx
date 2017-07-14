@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 function getStyles(props, state) {
-  console.log();
     return {
         labelStyleDefault: {
           cursor: 'pointer',
@@ -15,8 +14,8 @@ function getStyles(props, state) {
             height: '100%',
         },
         switchRoot: {
-            display: 'flex',
-            justifyContent: 'space-between',
+            display: 'flex' as 'flex',
+            justifyContent: 'space-between' as 'space-between',
         },
         toggleRoot: {
             position: 'relative',
@@ -32,7 +31,7 @@ function getStyles(props, state) {
         },
         toggleBtnDefult: {
           color: 'rgba(0, 0, 0, 0.87)',
-          backgroundColor: 'rgb(245, 245, 245)',
+          backgroundColor: props.thumbStyle ? props.thumbStyle :'rgb(245, 245, 245)',
           transition: 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms',
           boxSizing: 'border-box',
           fontFamily: 'Roboto, sans-serif',
@@ -47,7 +46,7 @@ function getStyles(props, state) {
         },
         toggleBtn: {
           color: 'rgba(0, 0, 0, 0.87)',
-          backgroundColor: 'rgb(0, 188, 212)',
+          backgroundColor: props.thumbSwitchedStyle ? props.thumbSwitchedStyle : 'rgb(0, 188, 212)',
           transition: 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms',
           boxSizing: 'border-box',
           fontFamily: 'Roboto, sans-serif',
@@ -71,11 +70,11 @@ interface Props extends React.Props<Toggle> {
   labelPosition?: string;
   style?: any;
   state?: any;
-  thumbStyle?: string; 
-  trackStyle?: string;
-  thumbSwitchedStyle?: string;
-  trackSwitchedStyle?: string;
-  labelStyle?: string;
+  thumbStyle?: any; 
+  trackStyle?: any;
+  thumbSwitchedStyle?: any;
+  trackSwitchedStyle?: any;
+  labelStyle?: any;
 }
 
 export default class Toggle extends React.Component<Props, {switched}> {
@@ -102,30 +101,32 @@ export default class Toggle extends React.Component<Props, {switched}> {
   public render() {
     
     const styles = getStyles(this.props, this.state);
-    const {label, style, defaultToggled, disabled, labelPosition, labelStyle} = this.props;   
+    const {label, style, defaultToggled, disabled, labelPosition, labelStyle} = this.props;
     const switched = this.state.switched;
-
-    const labelStyleDefault = {...styles.labelStyleDefaul, ...labelStyle};
-    const labelElm = (<label style={disabled ? styles.labelStyleDisabled : labelStyleDefault} 
+    
+    const labelElm = (<label style={disabled ? styles.labelStyleDisabled : styles.labelStyleDefault} 
                         onClick={disabled ? this.handleNothing : this.handleChange} >{label}
                       </label>);
 
     const inputElm = (<input type="checkbox" checked={switched} disabled={disabled} onChange={this.handleChange} style={styles.inputStyle} />);    
     
-    const toggleDefault = {...styles.toggleRoot, ...styles.labelStyleDefault};
-    const toggleDisable = {...styles.toggleRoot, ...styles.labelStyleDisabled};
-    
     const toggleElm = (
-        <div className="toggle-root" onClick={disabled ? this.handleNothing : this.handleChange} style={disabled ? toggleDisable : toggleDefault}>
+        <div className="toggle-root" onClick={disabled ? this.handleNothing : this.handleChange} style={disabled ? styles.toggleRoot : styles.toggleRoot}>
           <div className="toggle-btn" style={switched ? styles.toggleBtn : styles.toggleBtnDefult}></div>
           <div className="toggle-pad" style={styles.togglePad}></div>
         </div>
     );
 
     const switchElm = labelPosition === 'right' ? (
-      <div style={styles.switchRoot}>{toggleElm}{labelElm}</div>
+      <div style={styles.switchRoot}>
+        {toggleElm}
+        {labelElm}
+      </div>
     ) : (
-      <div style={styles.switchRoot}>{labelElm}{toggleElm}</div>
+      <div style={styles.switchRoot}>
+        {labelElm}
+        {toggleElm}
+      </div>
     ); 
     
     return (
