@@ -14,7 +14,7 @@ This is a react based toggle button component developed using Typescript.
 
 ## Usage
 ### Basic:
-
+```typescript
     interface Props extends React.Props<Toggle> {
         label: string;
         style: any;
@@ -27,6 +27,7 @@ This is a react based toggle button component developed using Typescript.
     };
     
     <Toggle label="Simple" style={styles.togglebutton} />
+```
 
 ### The above example demonstrates the following:
 How to pass custom label
@@ -35,6 +36,7 @@ Shows the default checked, un-checked toggle icons
 
 ### Further Customization
 
+```typescript
     const styles = {
       togglebutton: {
         marginBottom: 16
@@ -42,6 +44,7 @@ Shows the default checked, un-checked toggle icons
     };
     
     <Toggle label="Custom icon" style={styles.togglebutton} uncheckedIcon={} checkedIcon={} />
+```
 
 The above example demonstrates the following:
 How to pass custom label
